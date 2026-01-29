@@ -19,7 +19,7 @@ jobs:
           image: hjacquelin-os
           tags: latest ${{ github.run_id }}
           containerfiles: ./Containerfile
-          format: oci
+          oci: true
 
       - name: Push to Quay
         uses: redhat-actions/push-to-registry@v2
