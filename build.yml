@@ -1,0 +1,30 @@
+name: Build and Push OS
+on:
+  schedule:
+    - cron: '0 0 * * 1' # S'execute tout les lundis a minuit
+  push:
+    branches: [ main ] # S'execute des que je modifie le Containerfile
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Build Image
+        id: build
+        uses: redhat-actions/buildah-build@v2
+        with:
+          image: hjacquelin-os
+          tags: latest ${{ github.run_id }}
+          containerfiles: ./Containerfile
+
+      - name: Push to Quay
+        uses: redhat-actions/push-to-registry@v2
+        with:
+          image: hjacquelin-os
+          tags: latest ${{ github.run_id }}
+          registry: quay.io/hjacquelin
+          username: ${{ secrets.QUAY_USERNAME }}
+          password: ${{ secrets.QUAY_PASSWORD }}
