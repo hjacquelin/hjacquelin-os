@@ -21,7 +21,6 @@ RUN curl -L https://github.com/eza-community/eza/releases/latest/download/eza_x8
     chmod +x /usr/bin/eza
 
 # On ajoute les scripts
-RUN mkdir -p /usr/local/bin
 COPY local_files/scripts/install-toolbox.sh /usr/local/bin/install-toolbox
 RUN chmod +x /usr/local/bin/install-toolbox
 
