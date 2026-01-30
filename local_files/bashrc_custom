@@ -1,0 +1,16 @@
+# Initialisation de zoxide
+eval "$(zoxide init bash)"
+
+# Alias pour eza (remplace ls)
+alias ls='eza --icons --group-directories-first'
+alias ll='eza -lh --icons --git --group-directories-first'
+alias la='eza -lah --icons --git --group-directories-first'
+alias tree='eza --tree --icons'
+
+# Alias de navigation et raccourcis OS
+alias cd='z'
+alias up='sudo rpm-ostree upgrade'
+alias st='rpm-ostree status'
+
+# Colorisation du terminal (si pas déjà active)
+export FORCE_COLOR=1
