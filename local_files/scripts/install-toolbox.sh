@@ -4,7 +4,7 @@
 echo "🚀 Récupération de la dernière version de JetBrains Toolbox..."
 
 # Trouver l'URL de téléchargement direct
-URL=$(curl -s 'https://data.services.jetbrains.com/products/releases?code=TBA&latest=true&type=release' | grep -Po '"linux":\s*"\K[^"]*')
+URL=$(curl -s 'https://data.services.jetbrains.com/products/releases?code=TBA&latest=true&type=release' | jq -r '.TBA[0].downloads.linux.link')
 
 if [ -z "$URL" ]; then
     echo "❌ Erreur : Impossible de trouver l'URL de téléchargement."
