@@ -13,7 +13,7 @@ fi
 
 # Téléchargement et extraction
 mkdir -p /tmp/toolbox
-curl -L "$URL" | tar -xz -C /tmp/toolbox --strip-components=1
+curl -L "$URL" | tar -xz -C /tmp/toolbox --strip-components=2
 
 # Exécution de l'installateur (Toolbox s'installe par défaut dans ~/.local/share/JetBrains)
 echo "📦 Lancement de l'installateur..."
